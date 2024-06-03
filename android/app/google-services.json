@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923426620721",
+    "project_id": "dedguia",
+    "storage_bucket": "dedguia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923426620721:android:2ed8f60689feabb50edc10",
+        "android_client_info": {
+          "package_name": "com.example.ddguia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDerPLL7AwvDaSv8mB2pwDhU9jsFrXDMuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
