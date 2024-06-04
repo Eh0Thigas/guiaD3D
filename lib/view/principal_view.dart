@@ -20,7 +20,7 @@ class _PrincipalViewState extends State<PrincipalView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu Principal'),
+        title: Text('Menu Principal',),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -42,6 +42,7 @@ class _PrincipalViewState extends State<PrincipalView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                const SizedBox(width: 16),
                 FloatingActionButton.extended(
                   onPressed: () {
                     Navigator.pushNamed(

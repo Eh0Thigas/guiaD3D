@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../controller/login_controller.dart';
 
-class CadastrarView extends StatefulWidget {
-  const CadastrarView({super.key});
+class CadastrarLoginView extends StatefulWidget {
+  const CadastrarLoginView({super.key});
 
   @override
-  State<CadastrarView> createState() => _CadastrarViewState();
+  State<CadastrarLoginView> createState() => _CadastrarLoginViewState();
 }
 
-class _CadastrarViewState extends State<CadastrarView> {
+class _CadastrarLoginViewState extends State<CadastrarLoginView> {
   var txtNome = TextEditingController();
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
