@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../controller/login_controller.dart';
+import '../../controller/login_controller.dart';
 
 class CadastrarLoginView extends StatefulWidget {
   const CadastrarLoginView({super.key});
@@ -13,6 +13,9 @@ class CadastrarLoginView extends StatefulWidget {
 
 class _CadastrarLoginViewState extends State<CadastrarLoginView> {
   var txtNome = TextEditingController();
+  var txtTelefone = TextEditingController();
+  var txtCpf = TextEditingController();
+  var txtNickname = TextEditingController();
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
 
@@ -38,6 +41,30 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               decoration: InputDecoration(
                   labelText: 'Nome',
                   prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 15),
+            TextField(
+              controller: txtTelefone,
+              decoration: InputDecoration(
+                  labelText: 'Telefone',
+                  prefixIcon: Icon(Icons.call),
+                  border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 15),
+            TextField(
+              controller: txtCpf,
+              decoration: InputDecoration(
+                  labelText: 'Cpf',
+                  prefixIcon: Icon(Icons.call),
+                  border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 15),
+            TextField(
+              controller: txtNickname,
+              decoration: InputDecoration(
+                  labelText: 'Nickname',
+                  prefixIcon: Icon(Icons.call),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -75,6 +102,9 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
                     LoginController().criarConta(
                       context,
                       txtNome.text,
+                      txtTelefone.text,
+                      txtCpf.text,
+                      txtNickname.text,
                       txtEmail.text,
                       txtSenha.text,
                     );

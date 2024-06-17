@@ -6,7 +6,7 @@ import '../view/util.dart';
 
 class LoginController{
 
-  criarConta(context,nome,email,senha){
+  criarConta(context,nome,telefone,cpf, nickname, email,senha){
     FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: senha).then((resultado){
     
 
@@ -16,6 +16,9 @@ class LoginController{
         {
           "uid": resultado.user!.uid,
           "nome": nome,
+          "telefone": telefone,
+          "cpf": cpf,
+          "nickname": nickname,
         }
       );
 

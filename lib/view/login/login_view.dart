@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../controller/login_controller.dart';
+import '../../controller/login_controller.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -22,8 +22,8 @@ class _LoginViewState extends State<LoginView> {
     super.initState();
 
     //nao precisa ficar digitando
-    // txtEmail.text = 'abner@email.com';
-    // txtSenha.text = 'abner123';
+    txtEmail.text = 'vava@email.com';
+    txtSenha.text = '19112001';
   }
 
   @override
