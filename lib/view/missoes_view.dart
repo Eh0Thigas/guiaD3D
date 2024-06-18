@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../controller/login_controller.dart';
 import '../controller/missoes_controller.dart';
-import '../controller/personagens_controller.dart';
 import '../model/missao.dart';
-import '../model/personagem.dart';
+
 
 
 class MissoesView extends StatefulWidget {
@@ -34,7 +33,6 @@ class _MissoesViewState extends State<MissoesView> {
             icon: Icon(Icons.exit_to_app),
             tooltip: 'sair',
             onPressed: () {
-              LoginController().logout();
               Navigator.pop(context);
             },
           ),

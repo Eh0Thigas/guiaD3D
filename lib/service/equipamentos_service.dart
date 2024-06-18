@@ -2,10 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../model/classes.dart';
 import '../model/equipamentos.dart';
-
-
 
 
 class EquipamentosService {

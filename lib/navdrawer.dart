@@ -17,10 +17,10 @@ class NavDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             decoration: BoxDecoration(
-                color: Colors.green,
+                color: Color.fromARGB(255, 102, 51, 6),
                 image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))),
+                    image: AssetImage('/assets/bg3.jpg'))),
           ),
           ListTile(
             leading: Icon(Icons.input),
@@ -36,11 +36,6 @@ class NavDrawer extends StatelessWidget {
                       'usuario',
                     );
             },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.border_color),

@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 
 
-import '../../model/racas.dart';
+import '../../model/dano.dart';
 
-import '../../service/racas_service.dart';
+import '../../service/dano_service.dart';
 
 
 
@@ -29,11 +29,11 @@ class _DanoViewState extends State<DanoView> {
         padding: EdgeInsets.all(20),
 
         child: FutureBuilder(
-          future: RacasService().listarRacas(),
+          future: DanoService().listarDanos(),
           builder: (context, snapshot) {
             //Requisição finalizada
             if (snapshot.connectionState == ConnectionState.done) {
-              var lista = snapshot.data as List<Raca>;
+              var lista = snapshot.data as List<Dano>;
               return ListView.builder(
                 itemCount: lista.length,
                 itemBuilder: (context, index) {

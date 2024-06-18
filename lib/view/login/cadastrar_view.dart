@@ -33,14 +33,14 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
           children: [
             Text(
               'Criar Conta',
-              style: TextStyle(fontSize: 60),
+              style: TextStyle(fontSize: 60, color: Color.fromARGB(255, 102, 51, 6)),
             ),
             SizedBox(height: 60),
             TextField(
               controller: txtNome,
               decoration: InputDecoration(
                   labelText: 'Nome',
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: Icon(Icons.person, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -48,7 +48,7 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               controller: txtTelefone,
               decoration: InputDecoration(
                   labelText: 'Telefone',
-                  prefixIcon: Icon(Icons.call),
+                  prefixIcon: Icon(Icons.call, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -56,7 +56,7 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               controller: txtCpf,
               decoration: InputDecoration(
                   labelText: 'Cpf',
-                  prefixIcon: Icon(Icons.call),
+                  prefixIcon: Icon(Icons.call, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -64,7 +64,7 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               controller: txtNickname,
               decoration: InputDecoration(
                   labelText: 'Nickname',
-                  prefixIcon: Icon(Icons.call),
+                  prefixIcon: Icon(Icons.call, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -72,7 +72,7 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               controller: txtEmail,
               decoration: InputDecoration(
                   labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.email, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 15),
@@ -81,7 +81,7 @@ class _CadastrarLoginViewState extends State<CadastrarLoginView> {
               obscureText: true,
               decoration: InputDecoration(
                   labelText: 'Senha',
-                  prefixIcon: Icon(Icons.password),
+                  prefixIcon: Icon(Icons.password, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
             ),
             SizedBox(height: 40),

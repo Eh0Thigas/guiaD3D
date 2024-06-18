@@ -24,6 +24,8 @@ class _PrincipalViewState extends State<PrincipalView> {
             Navigator.pushNamed(context,'personagens');
           }else if(_selectedIndex == 2){
             Navigator.pushNamed(context,'missoes');
+          }else if(_selectedIndex == 3){
+            Navigator.pushNamed(context,'historias');
           }
       });
   }
@@ -33,7 +35,13 @@ class _PrincipalViewState extends State<PrincipalView> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
-        title: Text('Menu Principal',),
+        title: Text(
+          'Menu Principal',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),),
+        backgroundColor: Color.fromARGB(255, 102, 51, 6),
       ),
 
      
@@ -41,16 +49,25 @@ class _PrincipalViewState extends State<PrincipalView> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            backgroundColor: Color.fromARGB(255, 102, 51, 6),
             icon: Icon(Icons.casino_sharp),
             label: 'Dados',
+            tooltip: 'Dados',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_accessibility),
             label: 'Personagens',
+            tooltip: 'Personagens',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.rule),
             label: 'Missões',
+            tooltip: 'Missões',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_open),
+            label: 'Historias',
+            tooltip: 'Historias',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -58,144 +75,103 @@ class _PrincipalViewState extends State<PrincipalView> {
         onTap: _onItemTapped,
       ),
 
+     body: 
+     Column( 
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+                Icons.apps,
+                size: 120,
+                color: Color.fromARGB(255, 140, 41, 8),
+              ),
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Classes"),
+                subtitle: Text("Tipos de Classes"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'classes',
+                    );
+                },
+            ),
+            
+          ), 
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Condições"),
+                subtitle: Text("Condições que o personagem pode estar em batalha ou em situações na historia"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'condicoes',
+                    );
+                },
+            ),
+            
+          ), 
 
-      body: LayoutBuilder(
-      builder: (context, constrains) {
-        return Column(
-          children: [
-            Container(
-              width: constrains.maxWidth,
-              height: constrains.maxHeight,
-              color: Colors.red,
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Tipos de danos"),
+                subtitle: Text("Cada magia ou armas podem dar varios tipos de danos"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'tiposdedanos',
+                    );
+                },
             ),
-            Container(
-              width: constrains.maxWidth,
-              height: constrains.maxHeight ,
-              color: Colors.blue,
+            
+          ),
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Equipamentos"),
+                subtitle: Text("Armas e armaduras que os personagens podem ter"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'equipamentos',
+                    );
+                },
             ),
-            Container(
-              width: constrains.maxWidth,
-              height: constrains.maxHeight,
-              color: Colors.green,
+            
+          ),
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Monstros"),
+                subtitle: Text("Inimigos e monstros"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'monstros',
+                    );
+                },
             ),
-          ],
-        );
-      },
-    ),
+            
+          ),
+          Card(
+            color: Color.fromARGB(141, 194, 186, 48),
+            child: ListTile(
+                title: Text("Raças"),
+                subtitle: Text("Raças que possuem no universo de D&D"),
+                onTap:(){
+                  Navigator.pushNamed(
+                    context,
+                    'racas',
+                    );
+                },
+            ),
+            
+          ),
+        ],
+      ),
       
-      // BODY
-    //   body: Center(
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //       children: <Widget>[
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'classes',
-    //                 );
-    //               },
-    //               label: const Text('Classes'),
-    //             ),
-    //           ],
-    //         ),
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'condicoes',
-    //                 );
-    //               },
-    //               label: const Text('Condiçôes'),
-    //             ),
-    //           ],
-    //         ),
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'equipamentos',
-    //                 );
-    //               },
-    //               label: const Text('Equipamentos'),
-    //             ),
-    //           ],
-    //         ),
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'monstros',
-    //                 );
-    //               },
-    //               label: const Text('Monstros'),
-    //             ),
-    //           ],
-    //         ),
-    //          Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'personagens',
-    //                 );
-    //               },
-    //               label: const Text('Personagens'),
-    //             ),
-    //           ],
-    //         ),
-    //         Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'missoes',
-    //                 );
-    //               },
-    //               label: const Text('Missões'),
-    //             ),
-    //           ],
-    //         ),
-    //          Row(
-    //           mainAxisAlignment: MainAxisAlignment.start,
-    //           children: <Widget>[
-    //             const SizedBox(width: 5),
-    //             FloatingActionButton.extended(
-    //               onPressed: () {
-    //                 Navigator.pushNamed(
-    //                   context,
-    //                   'dados',
-    //                 );
-    //               },
-    //               label: const Text('Tipos de Dados'),
-    //             ),
-    //           ],
-    //         ),
-    //       ],
-    //     ),
-    //   ),
      );
   }
   

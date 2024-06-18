@@ -8,6 +8,7 @@ import 'view/API/dano_view.dart';
 import 'view/API/racas_view.dart';
 import 'view/dados_view.dart';
 import 'view/API/equipamentos_view.dart';
+import 'view/historia_view.dart';
 import 'view/login/cadastrar_view.dart';
 import 'view/API/classes_view.dart';
 import 'view/API/condicoes_view.dart';
@@ -17,6 +18,7 @@ import 'view/API/monstros_view.dart';
 import 'view/personagem_view.dart';
 import 'view/principal_view.dart';
 import 'view/login/usuarios_view.dart';
+import 'view/sobre.dart';
 
 Future <void> main() async{
 
@@ -26,7 +28,7 @@ Future <void> main() async{
 
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => MainApp(),
     ),
   );
@@ -48,12 +50,13 @@ class MainApp extends StatelessWidget {
         'personagens': (context) => const PersonagemView(),
         'missoes': (context) => const MissoesView(),
         'dados': (context) => const DadosView(),
-        //'sobre': (context) => const SobreView(),
+        'historias': (context) => const HistoriaView(),
+        'sobre': (context) => const SobreView(),
         'classes': (context) => const ClassesView(),
         'condicoes': (context) => const CondicoesView(),
         'equipamentos': (context) => const EquipamentosView(),
         'monstros': (context) => const MonstrosView(),
-        'tipos_de_dados': (context) => const DanoView(),
+        'tiposdedanos': (context) => const DanoView(),
         'racas': (context) => const RacasView(),
       }
     );

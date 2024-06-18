@@ -3,40 +3,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/login_controller.dart';
-import '../../controller/usuario_controller.dart';
-import '../../model/usuario.dart';
+import '../controller/historia_controller.dart';
+import '../controller/login_controller.dart';
+import '../controller/missoes_controller.dart';
+import '../model/historia.dart';
+import '../model/missao.dart';
 
-class UsuariosView extends StatefulWidget {
-  const UsuariosView({super.key});
+
+
+class HistoriaView extends StatefulWidget {
+  const HistoriaView({super.key});
 
   @override
-  State<UsuariosView> createState() => _UsuariosViewState();
+  State<HistoriaView> createState() => _HistoriaViewState();
 }
 
-class _UsuariosViewState extends State<UsuariosView> {
+class _HistoriaViewState extends State<HistoriaView> {
   var txtNome = TextEditingController();
-  var txtTelefone = TextEditingController();
-  var txtCpf = TextEditingController();
-  var txtNickname = TextEditingController();
+  var txtObjetivo = TextEditingController();
+  var txtPersonagens = TextEditingController();
+  var txtEnredo = TextEditingController();
+  var txtLocal = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Usuario', 
-        style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Color.fromARGB(255, 102, 51, 6),
+        title: Text('Historias'),
         actions: [
           IconButton(
-            icon: Icon(Icons.arrow_forward),
-            color: Colors.white,
+            icon: Icon(Icons.exit_to_app),
             tooltip: 'sair',
             onPressed: () {
+              LoginController().logout();
               Navigator.pop(context);
             },
           ),
@@ -48,7 +47,7 @@ class _UsuariosViewState extends State<UsuariosView> {
         padding: const EdgeInsets.all(20.0),
         child: StreamBuilder<QuerySnapshot>(
           //fluxo de dados em tempo real
-          stream: UsuarioController().listar().snapshots(),
+          stream: HistoriaController().listar().snapshots(),
 
           //exibição dos dados
           builder: (context, snapshot) {
@@ -77,7 +76,7 @@ class _UsuariosViewState extends State<UsuariosView> {
                       return Card(
                         child: ListTile(
                           title: Text(doc['nome']),
-                          subtitle: Text(doc['nickname']),
+                          subtitle: Text(doc['local']),
 
                           //excluir
                           trailing: SizedBox(
@@ -92,15 +91,25 @@ class _UsuariosViewState extends State<UsuariosView> {
                                   child: IconButton(
                                     onPressed: () {
                                       txtNome.text = doc['nome'];
-                                      txtTelefone.text = doc['telefone'];
-                                      txtCpf.text = doc['cpf'];
-                                      txtNickname.text = doc['nickname'];
-                                      salvarUsuario(context, docId: id);
+                                       txtObjetivo.text = doc['objetivo'];
+                                      txtPersonagens.text = doc['personagens'];
+                                      txtEnredo.text = doc['enredo'];
+                                      txtLocal.text = doc['local'];
+                                      salvarHistoria(context, docId: id);
                                     },
                                     icon: Icon(Icons.edit_outlined),
                                   ),
                                 ),
 
+                                //
+                                // EXCLUIR
+                                //
+                                IconButton(
+                                  onPressed: () {
+                                    HistoriaController().excluir(context, id);
+                                  },
+                                  icon: Icon(Icons.delete_outlined),
+                                ),
                               ],
                             ),
                           ),
@@ -110,12 +119,19 @@ class _UsuariosViewState extends State<UsuariosView> {
                   );
                 } else {
                   return Center(
-                    child: Text('Nenhum usuario encontrado.'),
+                    child: Text('Nenhuma Historia encontrada.'),
                   );
                 }
             }
           },
         ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          salvarHistoria(context);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -123,16 +139,16 @@ class _UsuariosViewState extends State<UsuariosView> {
   //
   // ADICIONAR TAREFA
   //
-  void salvarUsuario(context, {docId}) {
+  void salvarHistoria(context, {docId}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         // retorna um objeto do tipo Dialog
         return AlertDialog(
-          title: Text(docId == null ? "Adicionar Usuario" : "Editar Usuario"),
+          title: Text(docId == null ? "Adicionar Historia" : "Editar Historia"),
           content: SizedBox(
-            height: 400,
-            width: 500,
+            height: 450,
+            width: 300,
             child: Column(
               children: [
                 TextField(
@@ -145,30 +161,37 @@ class _UsuariosViewState extends State<UsuariosView> {
                 ),
                 SizedBox(height: 15),
                 TextField(
-                  controller: txtTelefone,
-             
+                  controller: txtObjetivo,
+                  maxLines: 2,
                   decoration: InputDecoration(
-                    labelText: 'Telefone',
+                    labelText: 'Objetivo',
                     alignLabelWithHint: true,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 SizedBox(height: 15),
                 TextField(
-                  controller: txtCpf,
-                
+                  controller: txtPersonagens,
                   decoration: InputDecoration(
-                    labelText: 'Cpf',
+                    labelText: 'Personagens',
+                    alignLabelWithHint: true,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 15), 
+                TextField(
+                  controller: txtEnredo,
+                  decoration: InputDecoration(
+                    labelText: 'Enredo da Historia',
                     alignLabelWithHint: true,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 SizedBox(height: 15),
                 TextField(
-                  controller: txtNickname,
-                  
+                  controller: txtLocal,
                   decoration: InputDecoration(
-                    labelText: 'Nickname',
+                    labelText: 'Local da Historia',
                     alignLabelWithHint: true,
                     border: OutlineInputBorder(),
                   ),
@@ -183,9 +206,10 @@ class _UsuariosViewState extends State<UsuariosView> {
               child: Text("fechar"),
               onPressed: () {
                 txtNome.clear();
-                txtTelefone.clear();
-                txtCpf.clear();
-                txtNickname.clear();
+                txtObjetivo.clear();
+                txtPersonagens.clear();
+                txtEnredo.clear();
+                txtLocal.clear();
                 Navigator.of(context).pop();
               },
             ),
@@ -193,21 +217,26 @@ class _UsuariosViewState extends State<UsuariosView> {
               child: Text("salvar"),
               onPressed: () {
                 //criar objeto Tarefa
-                var t = Usuario(
+                var t = Historia(
                   LoginController().idUsuarioLogado(),
                   txtNome.text,
-                  txtTelefone.text,
-                  txtCpf.text,
-                  txtNickname.text
+                  txtObjetivo.text,
+                  txtPersonagens.text,
+                  txtEnredo.text,
+                  txtLocal.text,
                 );
 
                 txtNome.clear();
-                txtTelefone.clear();
-                txtCpf.clear();
-                txtNickname.clear();
+                txtObjetivo.clear();
+                txtPersonagens.clear();             
+                txtEnredo.clear();
+                txtLocal.clear();
 
-                UsuarioController().atualizar(context, docId, t);
-                
+                if (docId == null) {
+                  HistoriaController().adicionar(context, t);
+                } else {
+                  HistoriaController().atualizar(context, docId, t);
+                }
               },
             ),
           ],

@@ -20,10 +20,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   void initState() {
     super.initState();
-
-    //nao precisa ficar digitando
-    txtEmail.text = 'vava@email.com';
-    txtSenha.text = '19112001';
   }
 
   @override
@@ -35,15 +31,16 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Text(
               'Login',
-              style: TextStyle(fontSize: 60),
+              style: TextStyle(fontSize: 60,color: Color.fromARGB(255, 102, 51, 6),),
             ),
             SizedBox(height: 60),
             TextField(
               controller: txtEmail,
               decoration: InputDecoration(
                   labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.email, color: Color.fromARGB(255, 102, 51, 6)),
                   border: OutlineInputBorder()),
+                  
             ),
             SizedBox(height: 15),
             TextField(
@@ -51,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
               obscureText: true,
               decoration: InputDecoration(
                   labelText: 'Senha',
-                  prefixIcon: Icon(Icons.password),
+                  prefixIcon: Icon(Icons.password, color: Color.fromARGB(255, 102, 51, 6),),
                   border: OutlineInputBorder()),
             ),
             Align(
@@ -77,6 +74,7 @@ class _LoginViewState extends State<LoginView> {
                                   labelText: 'Email',
                                   prefixIcon: Icon(Icons.email),
                                   border: OutlineInputBorder(),
+                                  
                                 ),
                               ),
                             ],
@@ -115,22 +113,19 @@ class _LoginViewState extends State<LoginView> {
                 minimumSize: Size(200, 40),
               ),
               onPressed: () {
-                //
-                //Login
-                //
                 LoginController().login(
                   context, 
                   txtEmail.text, 
                   txtSenha.text
                 );
               },
-              child: Text('Entrar'),
+              child: Text('Entrar',),
             ),
             SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Ainda não tem conta?'),
+                Text('Ainda não tem conta?', ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, 'cadastrar');
